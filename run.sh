@@ -1,6 +1,6 @@
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.26.1/deploy/static/mandatory.yaml
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.26.1/deploy/static/provider/cloud-generic.yaml
+helm install --namespace ingress-nginx ingress-nginx ingress-nginx/ingress-nginx
 
+kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.15.0/cert-manager.crds.yaml
+helm repo add jetstack https://charts.jetstack.io
 kubectl create namespace cert-manager
-kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.12.0/cert-manager.yaml
-kubectl get pods --namespace cert-manager
+helm install cert-manager --namespace cert-manager jetstack/cert-manager
