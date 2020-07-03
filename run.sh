@@ -1,4 +1,7 @@
 kubectl create namespace ingress-nginx
+
+#helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+#helm repo update
 helm install --namespace ingress-nginx ingress-nginx ingress-nginx/ingress-nginx
 
 #kubectl --namespace ingress-nginx patch svc ingress-nginx-controller -p '{"spec":{"externalTrafficPolicy":"Local"}}'
